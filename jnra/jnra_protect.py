@@ -10,10 +10,10 @@ import torch
 
 from jnra import jnra
 
-data_path = Path('/home/simone.dotolo/style_mimicry/data/wikiart_zdzislaw-beksinki/original')
+data_path = Path('../data/wikiart_zdzislaw-beksinki/original')
 
 def main():
-    device = torch.device('cuda:3' if torch.cuda.is_available() else 'cpu')
+    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
     pipe_img2img = StableDiffusionPipeline.from_pretrained('stabilityai/stable-diffusion-2-1-base', torch_dtype=torch.float32)
     pipe_img2img.scheduler = DPMSolverMultistepScheduler.from_config(pipe_img2img.scheduler.config)
